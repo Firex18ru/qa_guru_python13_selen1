@@ -1,4 +1,4 @@
-from selene import browser, have, be
+from selene import browser, have, be, by
 
 
 def test_demoqa():
