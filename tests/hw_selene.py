@@ -1,9 +1,13 @@
 from selene import browser, have, be
 
 
-def test_complete_todo():
+def test_demoqa():
 
-    browser.open("/")
-    browser.element("#firstName").type("Ivan").press_enter()
-    browser.element("#lastName").type("Yakimenko").press_enter()
-    browser.element("#userEmail-wrapper").tupe("Firex1@yandex.ru").press_enter()
+    browser.open("/automation-practice-form")
+    browser.element("#firstName").type("Ivan")
+    browser.element("#lastName").type("Yakimenko")
+    browser.element("#userEmail-wrapper").type("Firex1@yandex.ru")
+
+    browser.element("#genterWrapper").all("label[for^=gender-radio]").element_by(
+        have.text("male")
+    ).click()
