@@ -30,14 +30,13 @@ def test_demoqa_form():
     ).click()
     browser.all(".react-datepicker__day--001").second.click()
 
-    browser.element("#subjectsInput").type("other")
-
     # указываю увлечения
+    browser.element("#subjectsInput").type("Computer Science").press_enter()
     browser.element("[for = hobbies-checkbox-1]").click()
     browser.element("[for = hobbies-checkbox-2]").click()
 
     # загружаю картинку
-    browser.element("#uploadPicture").send_keys(os.path.abspath("picture\094745.png"))
+    browser.element("#uploadPicture").send_keys(os.path.abspath("./picture/094745.png"))
 
     # указываю текущий адрес
     browser.element("#currentAddress").type("Izhevsk")
@@ -47,7 +46,7 @@ def test_demoqa_form():
     browser.element("#city").click().element("#react-select-4-option-0").click()
 
     # отправляю анкету
-    browser.element("#submit").click()
+    browser.element("#submit").press_enter()
 
     # проверка анкеты
 
@@ -55,13 +54,15 @@ def test_demoqa_form():
         have.exact_texts(
             "Ivan Yakimenko",
             "Def11@def.ru",
-            "male",
+            "Male",
             "0999777601",
-            "01 February, 1989",
-            "other",
+            "01 February,1989",
+            "Computer Science",
             "Sports, Reading",
             "094745.png",
             "Izhevsk",
             "NCR Delhi",
         )
     )
+
+    browser.element("#closeLargeModal").click()
